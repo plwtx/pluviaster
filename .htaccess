@@ -1,0 +1,31 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+ErrorDocument 404 /index.html
+
+# Crawler blocking measures
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTP_USER_AGENT} (GPTBot|ChatGPT-User|Google-Extended|CCBot|ClaudeBot|Anthropic|OAI-SearchBot|PerplexityBot|FacebookBot|Amazonbot|DataForSeoBot) [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+<Files "robots.txt">
+  ForceType text/plain
+</Files>
+
+<IfModule mod_alias.c>
+  RedirectMatch 403 ^/robots\.txt$
+</IfModule>
+
+Options -Indexes

@@ -30,23 +30,26 @@ This is my personal starter kit / template. I am still working on it so please n
 ###### Project Structure:
 ```
 src/
-├── assets/          # Static files (images, fonts, svgs) (seperated by formats.)
-│   └── svg/         # SVG Format
-│   └── webp/        # WEBP Format
-├── components/      # Reusable, atomic UI components (Buttons, Inputs, Cards)
-│   └── ui/          # (CVA + Animations / etc.)
-├── config/          # Project constants, environment variables, i18n setup etc.
-├── features/        # Core of the app.
-│   └── auth/        # Auth feature
+├── assets/             # Static files (images, fonts, svgs) (seperated by formats.)
+│   └── svg/            # SVG Format
+│   └── webp/           # WEBP Format
+├── components/         # Reusable, atomic UI components (Buttons, Inputs, Cards)
+│   └── ui/             # (CVA + Animations / etc.)
+├── config/             # (App) Project constants, environment variables, setup etc.
+├── data/               # .json .jsx data files.
+├── features/           # Core of the app.
+│   └── auth/           # Auth feature
 │       ├── components/ # Feature-specific UI
 │       ├── hooks/      # Feature-specific logic
 │       ├── services/   # API calls for this feature
 │       └── types/      # TypeScript definitions for this feature
-├── hooks/           # Global, reusable hooks (useMediaQuery, useTheme)
-├── layouts/         # Page wrappers (DashboardLayout, AuthLayout)
-├── lib/             # Third-party library wrappers (utils.ts, etc.)
-├── pages/           # Route-level components (Home, Error, etc.)
-├── router/          # Route definitions and guards ()
-├── store/           # Global state management (Zustand, Redux, etc.)
-└── types/           # Global TypeScript types and interfaces
+├── hooks/              # Global, reusable hooks (useMediaQuery, useTheme)
+├── ignore/             # Private personal files, test files to be ignored by git commit. 
+├── layouts/            # Page wrappers (DashboardLayout, AuthLayout)
+├── lib/                # Third-party library wrappers (utils.ts, etc.)
+├── locales/            # i18n translation files.
+├── pages/              # Route-level components (Home, Error, etc.)
+├── router/             # Route definitions and guards ()
+├── store/              # Global state management (Zustand, Redux, etc.)
+└── styles/             # Custom CSS / other styles.
 ```
