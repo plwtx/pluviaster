@@ -1,20 +1,20 @@
-### pluviaster
+### Pluviaster (´｡• ω •｡`)
 
 This is my personal starter kit / template. I am still working on it so please note that it is all under development and not meant to be used.
 
 ### Used packages
 
 ###### Core
-- Vite (7.3.1) (MIT)
-- React Router (7.12.0) (MIT)
-- i18next (25.7.4) (MIT)
+- Vite (8.1.4) (MIT)
+- React Router (8.2.0) (MIT)
+- i18next (26.3.6) (MIT)
 
 ###### Design
-- Tailwind (v4.1.18) (MIT)
-- Motion One (12.26.2) (MIT)
-- Lucide React Icons (0.562.0) (ISC)
+- Tailwind (v4.3.2) (MIT)
+- Motion One (12.42.2) (MIT)
+- Lucide React Icons (1.24.0) (ISC)
 - Tailwind Corner Shape (0.0.8-3) (MIT)
-- Tailwind Merge (3.4.0) (MIT)
+- Tailwind Merge (3.6.0) (MIT)
 - Class Variance Authority (CVA) (0.7.1) (Apache-2.0)
 - clsx (Conditional className constructor) (2.1.1) (MIT)
 
@@ -28,28 +28,28 @@ This is my personal starter kit / template. I am still working on it so please n
 
 
 ###### Project Structure:
+
+Feature-based: one folder per domain feature (the SRP boundary) with concerns layered inside it; cross-feature code in `shared/`, the app shell in `app/`.
+
 ```
 src/
-├── assets/             # Static files (images, fonts, svgs) (seperated by formats.)
-│   └── svg/            # SVG Format
-│   └── webp/           # WEBP Format
-├── components/         # Reusable, atomic UI components (Buttons, Inputs, Cards)
-│   └── ui/             # (CVA + Animations / etc.)
-├── config/             # (App) Project constants, environment variables, setup etc.
-├── data/               # .json .jsx data files.
-├── features/           # Core of the app.
-│   └── auth/           # Auth feature
-│       ├── components/ # Feature-specific UI
-│       ├── hooks/      # Feature-specific logic
-│       ├── services/   # API calls for this feature
-│       └── types/      # TypeScript definitions for this feature
-├── hooks/              # Global, reusable hooks (useMediaQuery, useTheme)
-├── ignore/             # Private personal files, test files to be ignored by git commit. 
-├── layouts/            # Page wrappers (DashboardLayout, AuthLayout)
-├── lib/                # Third-party library wrappers (utils.ts, etc.)
-├── locales/            # i18n translation files.
-├── pages/              # Route-level components (Home, Error, etc.)
-├── router/             # Route definitions and guards ()
-├── store/              # Global state management (Zustand, Redux, etc.)
-└── styles/             # Custom CSS / other styles.
+├── main.tsx              # Entry: mounts <RouterProvider>, imports styles + i18n
+├── app/                  # App shell: routing, providers, global config
+│   ├── App.tsx           # Root demo screen
+│   ├── router.tsx        # React Router route table (createBrowserRouter)
+│   └── config/           # Global setup
+│       ├── i18n.ts       # i18next init
+│       └── locales/      # i18n translation files (en.json, ja.json)
+├── features/             # One folder per domain feature (the SRP boundary)
+│   └── <feature>/        #   components/ · hooks/ · services/ · types.ts · index.ts (public API)
+├── shared/               # Cross-feature reusable code
+│   ├── components/
+│   │   ├── ui/           # Atomic UI components (CVA variants + cn())
+│   │   └── animations/   # Motion-based components
+│   ├── hooks/            # Global hooks (useTheme)
+│   └── utils/            # Helpers (utils.ts → cn())
+├── styles/               # index.css (Flexoki theme) + any extra CSS
+└── ignore/               # Private/scratch files, git-ignored (created on demand)
 ```
+
+Directories not yet present (`assets/`, `layouts/`, `pages/`, `store/`, a shared `api/` layer, …) are created on demand — feature-local if they belong to one feature, otherwise under `shared/`.

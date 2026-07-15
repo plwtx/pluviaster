@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Outfit:wght@100..900&display=swap");
+
+@import "tailwindcss";
+@plugin "@toolwind/corner-shape";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Flexoki color scheme by Steph Ango https://stephango.com/flexoki
+ * Palette: raw color values. Usage: bg-paper, text-black, bg-red, text-blue-light, ...
+ */
+@theme {
+  /* (OPTIONAL) Remove Tailwind's default palette (this makes Flexoki is the single palette) */
+  --color-*: initial;
+
+  /* Base scale */
+  --color-black: #100f0f;
+  --color-paper: #fffcf0;
+  --color-base-950: #1c1b1a;
+  --color-base-900: #282726;
+  --color-base-850: #343331;
+  --color-base-800: #403e3c;
+  --color-base-700: #575653;
+  --color-base-600: #6f6e69;
+  --color-base-500: #878580;
+  --color-base-300: #b7b5ac;
+  --color-base-200: #cecdc3;
+  --color-base-150: #dad8ce;
+  --color-base-100: #e6e4d9;
+  --color-base-50: #f2f0e5;
+
+  /* Accents.`-light` for dark backgrounds */
+  --color-red: #af3029;
+  --color-red-light: #d14d41;
+  --color-orange: #bc5215;
+  --color-orange-light: #da702c;
+  --color-yellow: #ad8301;
+  --color-yellow-light: #d0a215;
+  --color-green: #66800b;
+  --color-green-light: #879a39;
+  --color-cyan: #24837b;
+  --color-cyan-light: #3aa99f;
+  --color-blue: #205ea6;
+  --color-blue-light: #4385be;
+  --color-purple: #5e409d;
+  --color-purple-light: #8b7ec8;
+  --color-magenta: #a02f6f;
+  --color-magenta-light: #ce5d97;
+
+  /* Utility */
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+
+  /* Fonts (Will replace google fonts api later)*/
+  --font-inria-serif: "Inria Serif", serif;
+  --font-outfit: "Outfit", sans-serif;
+}
+
+:root {
+  --flexoki-bg: var(--color-paper); /* primary background */
+  --flexoki-bg-2: var(--color-base-50); /* secondary background */
+  --flexoki-ui: var(--color-base-100); /* borders */
+  --flexoki-ui-2: var(--color-base-150); /* hovered borders */
+  --flexoki-ui-3: var(--color-base-200); /* active borders */
+  --flexoki-tx: var(--color-black); /* primary text */
+  --flexoki-tx-2: var(--color-base-600); /* muted text */
+  --flexoki-tx-3: var(--color-base-300); /* faint text */
+}
+
+.dark {
+  --flexoki-bg: var(--color-black);
+  --flexoki-bg-2: var(--color-base-950);
+  --flexoki-ui: var(--color-base-900);
+  --flexoki-ui-2: var(--color-base-850);
+  --flexoki-ui-3: var(--color-base-800);
+  --flexoki-tx: var(--color-base-200);
+  --flexoki-tx-2: var(--color-base-500);
+  --flexoki-tx-3: var(--color-base-700);
+}
+
+@theme inline {
+  --color-bg: var(--flexoki-bg);
+  --color-bg-2: var(--flexoki-bg-2);
+  --color-ui: var(--flexoki-ui);
+  --color-ui-2: var(--flexoki-ui-2);
+  --color-ui-3: var(--flexoki-ui-3);
+  --color-tx: var(--flexoki-tx);
+  --color-tx-2: var(--flexoki-tx-2);
+  --color-tx-3: var(--flexoki-tx-3);
+}
+
+/* Side scrollbar */
+html {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--flexoki-ui-3) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--flexoki-ui-3);
+  border-radius: 0px;
+}
+
+/* Custom CSS */
+@utility text-outline {
+  -webkit-text-stroke: 1px var(--flexoki-tx);
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom animations */
+@theme {
+  /* Animations */
+  --animate-spin-slow: spin-slow 2s linear infinite;
+  --animate-ping-fast: ping-slow 1s cubic-bezier(0, 0, 0.2, 1) infinite
+    alternate;
+  --animate-ping-slow: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite
+    alternate;
+  --animate-color-fade: color-fade 1s ease-in-out infinite alternate;
+  --animate-pendulum: pendulum 3s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    infinite;
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+
+  /* Keyframes */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes ping-slow {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(3.5);
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes color-fade {
+    0%,
+    100% {
+      color: var(--color-yellow);
+    }
+    50% {
+      color: var(--color-red);
+    }
+  }
+  @keyframes pendulum {
+    0%,
+    100% {
+      transform: rotate(25deg);
+    }
+    50% {
+      transform: rotate(-25deg);
+    }
+  }
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+}

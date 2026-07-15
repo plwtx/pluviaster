@@ -15,17 +15,15 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
-    /* Learning mode*/
     "strict": false,
     "noImplicitAny": false,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": false,
     "noUncheckedSideEffectImports": false,
 
     /* Path aliasing */
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
